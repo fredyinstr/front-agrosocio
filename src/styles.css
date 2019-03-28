@@ -1,1 +1,97 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    background: #f5f0f0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+
+a {
+    color: #1176b6
+}
+
+a:hover {
+    text-decoration: underline
+}
+
+header {
+    background: #05a72073;
+    padding: 10px 0;
+}
+
+header .logo img {
+    height: 80px;
+    border-radius: 5px;
+}
+
+
+/* BUSCAR  */
+
+header .buscar form input[type="text"] {
+    width: 100%;
+    background: #fff;
+    border: none;
+    font-size: 12px;
+    padding: 0 10px;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 3px 0 0 3px;
+    color: #6d6d6d;
+    font-family: 'Open Sans', sans-serif;
+}
+
+header .buscar form button {
+    width: 100%;
+    background: #fff;
+    border: none;
+    font-size: 12px;
+    padding: 0 10px;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 0 3px 3px 0;
+    cursor: pointer;
+    color: #6d6d6d;
+}
+
+header .buscar form button:hover {
+    background: #099efc;
+    color: #fff;
+}
+
+
+/* MENU */
+
+header .menu {
+    padding: 0;
+}
+
+header .menu a {
+    color: rgba(255, 255, 255, .8);
+    text-decoration: none;
+}
+
+
+/* header .menu a .cart{
+    
+} */
+
+header .menu a:hover {
+    color: #fff;
+}
+
+header .menu .imagen {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+}
+
+header .menu .imagen img {
+    border-radius: 100px;
+}
+
+@media screen and (max-width: 575px) {
+    header .menu {
+        padding: 15px 15px 0 15px;
+    }
+}

@@ -1,0 +1,20 @@
+.fondo {
+    background-image: url('../../assets/img/registro.jpg');
+    background-size: cover;
+    height: 100vh;
+}
+
+.logo {
+    position: absolute;
+    top: 50px;
+    left: 80px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.formulario {
+    top: 80px;
+}
+
+.card-form {
+    height: auto;
+}

@@ -1,8 +1,129 @@
-.header {
+header {
+    z-index: 200;
     margin-top: 0px;
     margin-left: 0px;
     margin-right: 0px;
-    height: 100px;
-    padding: 10px;
-    background: rgba(226, 226, 226, 1);
+}
+
+header .navegacion {
+    height: auto;
+    background: #53d403b9;
+    padding: 20px 0;
+}
+
+header .logo img {
+    height: 80px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+/* BUSCAR  */
+
+header .buscar form input[type="text"] {
+    width: 100%;
+    background: #fff;
+    border: none;
+    font-size: 12px;
+    padding: 0 10px;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 3px 0 0 3px;
+    color: #6d6d6d;
+    font-family: 'Robotto', sans-serif;
+}
+
+header .buscar form button {
+    width: 100%;
+    background: #fff;
+    border: none;
+    font-size: 12px;
+    padding: 0 10px;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 0 3px 3px 0;
+    cursor: pointer;
+    color: #6d6d6d;
+}
+
+header .buscar form button:hover {
+    background: #099efc;
+    color: #fff;
+}
+
+
+/* Menú desplegable "Categorías en el nav" */
+
+header nav .menu-categorias {
+    background-color: rgba(0, 0, 0, 0.897);
+}
+
+header nav .menu-categorias a {
+    color: rgb(255, 255, 255);
+    padding: 0px 20px 0px 20px;
+}
+
+header nav .menu-categorias h6 {
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+header nav .menu-categorias a:hover,
+h6:hover {
+    color: rgb(21, 125, 245);
+}
+
+
+/* MENU */
+
+header .menu {
+    padding: 0;
+}
+
+header .menu a {
+    color: rgba(255, 255, 255, .8);
+    text-decoration: none;
+    padding-right: 10px;
+}
+
+header .menu a:hover {
+    color: rgb(124, 180, 102);
+}
+
+header .menu .imagen {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    margin-left: 10px;
+}
+
+header .menu .imagen img {
+    border-radius: 100px;
+}
+
+.img-contenedor:hover #usuario-list {
+    display: block;
+}
+
+.img-contenedor #usuario-list {
+    width: 200px;
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 20px;
+    z-index: 2;
+}
+
+
+/* Area Ingreso - Registro */
+
+.ingreso {
+    padding: 0px 10px 0px 10px
+}
+
+@media screen and (max-width: 575px) {
+    header .menu {
+        padding: 15px 15px 0 15px;
+    }
 }

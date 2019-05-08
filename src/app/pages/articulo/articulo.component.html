@@ -1,0 +1,91 @@
+<div class="container nuevo">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Nuevo artículo</h4>
+                    <!-- <h6 class="card-subtitle">Información del artículo</h6> -->
+                    <div class="form p-t-20">
+                        <div class="form-group">
+                            <label for="nombreArticulo">Nombre</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="nombreArticulo" placeholder="Nombre Articulo">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcionArticulo">Descripción</label>
+                            <div class="input-group">
+                                <textarea class="form-control" id="descripcionArticulo" placeholder="Descripción"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="precioArticulo">Precio</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" [value]="articulo.valor|currency" class="form-control" aria-label="">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="seccion">Sección</label>
+                                </div>
+                                <select class="custom-select" id="seccion">
+                                  <option selected>Agrícola...</option>
+                                  <option value="1">Ferretería</option>
+                                </select>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="categoria">Categoría</label>
+                                </div>
+                                <select class="custom-select" id="seccion">
+                                  <option selected>Seleccionar...</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-success">
+                          <i class="fa fa-save"></i>
+                          Guardar información
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Nuevo artículo</h4>
+                    <!-- <h6 class="card-subtitle">Información del artículo</h6> -->
+                    <div class="form p-t-20">
+                        <div class="form-group">
+                            <label for="nombreArticulo">Nombre</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="nombreArticulo" placeholder="Nombre Articulo">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcionArticulo">Descripción</label>
+                            <div class="input-group">
+                                <textarea class="form-control" id="descripcionArticulo" placeholder="Descripción"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="precioArticulo">Precio</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="precioArticulo" placeholder="Precio">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">
+                          <i class="fa fa-save"></i>
+                          Guardar información
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

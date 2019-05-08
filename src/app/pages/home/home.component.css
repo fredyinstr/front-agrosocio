@@ -1,0 +1,77 @@
+    .home {
+        z-index: 0;
+        min-height: 500px;
+    }
+    
+    .nuevos {
+        padding: 20px;
+        font-family: sans-serif;
+    }
+    
+    .nuevos h5 {
+        color: #534a4ad7;
+    }
+    
+    .articulos .tarjeta {
+        margin-bottom: 15px;
+        padding: 5px;
+    }
+    
+    .infointeres {
+        margin: 40px 0 40px 0;
+    }
+    
+    .infointeres .info1,
+    .info2,
+    .info3 {
+        width: 100%;
+        padding: 10px;
+        height: 100px;
+        border: 2px solid rgb(0, 174, 255);
+        border-radius: 5px;
+        background-color: beige;
+    }
+    
+    .micard {
+        width: 100%;
+        height: auto;
+        margin: 20px 0 40px 0;
+        /* padding-top: 30px; */
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        text-align: center;
+        font-family: 'Robotto', sans-serif;
+    }
+    
+    .producto {
+        width: 18rem;
+        margin: 5px 5px 5px 5px;
+        background-color: white;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        /* text-align: center; */
+        padding-bottom: 10px;
+    }
+    
+    .producto:hover {
+        box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        background-color: rgba(182, 179, 179, 0.137);
+    }
+    
+    .producto img {
+        height: 180px;
+    }
+    
+    .producto-body {
+        height: auto;
+        padding: 15px 15px 0 15px;
+        font-size: 15px;
+        text-align: start;
+    }
+    
+    .pedido {
+        width: 100%;
+        padding: 15px;
+        min-height: 150px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        background-color: rgba(255, 255, 255, 0.822);
+    }

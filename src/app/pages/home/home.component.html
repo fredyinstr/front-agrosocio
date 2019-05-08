@@ -1,0 +1,127 @@
+<div class="home">
+    <!-- Slider -->
+    <div class="row slider">
+        <div class="col">
+            <div class="carousel slide" id="slider" data-ride="carousel">
+                <!-- <ol class="carousel-indicators">
+                <li data-target="#slider" data-slide-to="0"></li>
+                <li data-target="#slider" data-slide-to="1"></li>
+                <li data-target="#slider" data-slide-to="2"></li>
+            </ol> -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="../../../assets/img/slider/slide1.jpg" alt="slide1" class="d-block img-fluid">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../../../assets/img/slider/slide2.jpg" alt="slide2" class="d-block img-fluid">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../../../assets/img/slider/slide3.jpg" alt="slide3" class="d-block img-fluid">
+                    </div>
+                </div>
+                <a href="#slider" class="carousel-control-prev" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Anterior</span>
+                </a>
+
+                <a href="#slider" class="carousel-control-next" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Siguiente</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="nuevos container">
+
+        <div class="micard">
+            <div class="row">
+                <div class="col-12 col-md-4 border-right">
+                    <div class="row p-2">
+                        <div class="col-4">
+                            <img src="../../../assets/img/secciones/agro.png" alt="" class="img-fluid">
+                        </div>
+                        <div class="col-8 d-flex align-items-center">
+                            <h5 class="text-left">Productos agrícolas</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="row p-2">
+                        <div class="col-4">
+                            <img src="../../../assets/img/secciones/ferreteria.png" alt="" class="img-fluid">
+                        </div>
+                        <div class="col-8 d-flex align-items-center">
+                            <h5 class="text-left">Ferretería</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="row p-2">
+                        <div class="col-4">
+                            <img src="../../../assets/img/secciones/inversiones.png" alt="" class="img-fluid">
+                        </div>
+                        <div class="col-8 d-flex align-items-center">
+                            <h5 class="text-left">Oportunidades de inversión</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h4>NUEVOS PRODUCTOS</h4>
+        <hr>
+    </div>
+
+    <div class="articulos container">
+
+        <!-- <div class="row">
+            <div class="col col-md-8"> -->
+        <div class="row no-gutters">
+            <div class="tarjeta col col-md-4 col-lg-3 d-flex justify-content-center" *ngFor="let articulo of articulos">
+                <div class="producto">
+                    <img [src]="articulo.imagen" class="card-img-top img-fluid" alt="...">
+                    <div class="producto-body">
+                        <p class="card-text">{{ articulo.descripcion }}</p>
+                        <h4>{{ articulo.precio|currency:'USD':true:'1.0-0' }}</h4>
+                        <div class="form-group row">
+                            <div class="col-5">
+                                <input class="form-control" type="number" value="1" min="1" id="">
+                            </div>
+                            <div class="col-7">
+                                <button type="button" class="btn btn-success">agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col">
+                        <div class="pedido">
+                            <h4>Mi pedido</h4>
+                            <h6>Actualmente no hay artículos en la cesta</h6><br><br><br>
+                            <hr>
+                            <button class="btn btn-success btn-block">FINALIZAR PEDIDO</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="pedido">
+                            <h4>Mi pedido</h4>
+                            <h6>Actualmente no hay artículos en la cesta</h6><br><br><br>
+                            <hr>
+                            <button class="btn btn-success btn-block">FINALIZAR PEDIDO</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+    </div>
+</div>

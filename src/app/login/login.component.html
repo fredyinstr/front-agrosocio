@@ -1,0 +1,47 @@
+<div class="fondo">
+    <div class="d-none d-md-block mr-auto logo">
+        <a [routerLink]="['/home']"><img src="../../assets/img/logo2.png" height="80" alt=""></a>
+    </div>
+
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-3 col-lg-4"></div>
+            <div class="col-12 col-md-6 col-lg-4 formulario">
+                <div class="card">
+                    <div class="card-body card-form">
+                        <h4 class="card-title">Ingreso</h4>
+                        <div class="form p-t-20">
+                            <!-- <div class="row"> -->
+                            <!-- <div class="col-6"> -->
+
+                            <div class="form-group">
+                                <label for="nombreArticulo">Email</label>
+                                <div class="input-group">
+                                    <input type="email" class="form-control" id="email" placeholder="email">
+                                </div>
+                            </div>
+                            <!-- </div>
+                                <div class="col-6"> -->
+
+                            <div class="form-group">
+                                <label for="nombreArticulo">Contraseña</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="pass" placeholder="Contraseña">
+                                </div>
+                            </div>
+                            <!-- </div> -->
+
+                            <button type="submit" class="btn btn-success btn-block">
+                                  Ingresar
+                              </button>
+                            <!-- </div> -->
+                        </div>
+                        <p>No tienes cuenta? <a [routerLink]="['/register']">registrarse</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-lg-4"></div>
+        </div>
+    </div>
+</div>

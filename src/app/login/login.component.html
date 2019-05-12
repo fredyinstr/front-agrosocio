@@ -9,34 +9,37 @@
             <div class="col-12 col-md-6 col-lg-4 formulario">
                 <div class="card">
                     <div class="card-body card-form">
-                        <h4 class="card-title">Ingreso</h4>
-                        <div class="form p-t-20">
-                            <!-- <div class="row"> -->
-                            <!-- <div class="col-6"> -->
-
-                            <div class="form-group">
-                                <label for="nombreArticulo">Email</label>
-                                <div class="input-group">
-                                    <input type="email" class="form-control" id="email" placeholder="email">
+                        <form ngNativeValidate #f="ngForm" (ngSubmit)="ingresar( f )">
+                            <h4 class="card-title">Ingreso</h4>
+                            <div class="form p-t-20">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <div class="input-group">
+                                        <input [ngModel]="email" name="email" type="email" required class="form-control" id="email" placeholder="Correo del usuario">
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- </div>
-                                <div class="col-6"> -->
-
-                            <div class="form-group">
-                                <label for="nombreArticulo">Contraseña</label>
-                                <div class="input-group">
-                                    <input type="password" class="form-control" id="pass" placeholder="Contraseña">
+                                <div class="form-group">
+                                    <label for="password">Contraseña</label>
+                                    <div class="input-group">
+                                        <input ngModel name="password" type="password" required class="form-control" id="pass" placeholder="Contraseña">
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- </div> -->
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <div class="checkbox">
+                                            <input [(ngModel)]="recuerdame" name="recuerdame" type="checkbox" class="filled-in mr-2" id="recuerdame">
+                                            <label for="recuerdame">Recuérdame</label>
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <button type="submit" class="btn btn-success btn-block">
-                                  Ingresar
-                              </button>
-                            <!-- </div> -->
-                        </div>
-                        <p>No tienes cuenta? <a [routerLink]="['/register']">registrarse</a></p>
+                                <button type="submit" class="btn btn-success btn-block">
+                                    Ingresar
+                                </button>
+                                <!-- </div> -->
+                            </div>
+                        </form>
+                        <p class="mt-2">No tienes cuenta? <a [routerLink]="['/register']">regístrate aquí</a></p>
                     </div>
                 </div>
             </div>

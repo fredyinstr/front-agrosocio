@@ -36,14 +36,16 @@
     <div class="nuevos container">
 
         <div class="micard">
-            <div class="row">
-                <div class="col-12 col-md-4 border-right">
+            <div class="row secciones">
+                <div class="col-12 col-md-4">
                     <div class="row p-2">
                         <div class="col-4">
                             <img src="../../../assets/img/secciones/agro.png" alt="" class="img-fluid">
                         </div>
                         <div class="col-8 d-flex align-items-center">
-                            <h5 class="text-left">Productos agrícolas</h5>
+                            <a href="#">
+                                <h5 class="text-left">Productos agrícolas</h5>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -53,7 +55,9 @@
                             <img src="../../../assets/img/secciones/ferreteria.png" alt="" class="img-fluid">
                         </div>
                         <div class="col-8 d-flex align-items-center">
-                            <h5 class="text-left">Ferretería</h5>
+                            <a href="#">
+                                <h5 class="text-left">Ferretería</h5>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -63,7 +67,9 @@
                             <img src="../../../assets/img/secciones/inversiones.png" alt="" class="img-fluid">
                         </div>
                         <div class="col-8 d-flex align-items-center">
-                            <h5 class="text-left">Oportunidades de inversión</h5>
+                            <a href="#">
+                                <h5 class="text-left">Oportunidades de inversión</h5>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -81,10 +87,12 @@
         <div class="row no-gutters">
             <div class="tarjeta col col-md-4 col-lg-3 d-flex justify-content-center" *ngFor="let articulo of articulos">
                 <div class="producto">
-                    <img [src]="articulo.imagen" class="card-img-top img-fluid" alt="...">
+                    <img [src]="articulo.imagenes[0] | imagenes" class="card-img-top img-fluid" alt="...">
                     <div class="producto-body">
+                        <h4>{{ articulo.nombre }}</h4>
                         <p class="card-text">{{ articulo.descripcion }}</p>
                         <h4>{{ articulo.precio|currency:'USD':true:'1.0-0' }}</h4>
+                        <hr>
                         <div class="form-group row">
                             <div class="col-5">
                                 <input class="form-control" type="number" value="1" min="1" id="">

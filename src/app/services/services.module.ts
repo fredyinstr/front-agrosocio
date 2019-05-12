@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UsuarioService, ArticuloService } from './service.index';
+import { UsuarioService, ArticuloService, CategoriaService, SubirArchivoService } from './service.index';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -16,7 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     UsuarioService,
-    ArticuloService
+    ArticuloService,
+    CategoriaService,
+    SubirArchivoService
   ]
 })
 export class ServicesModule { }

@@ -13,10 +13,15 @@ export class HomeComponent implements OnInit {
 
   constructor( public _articuloService: ArticuloService) { }
 
+  porSeccion( seccion ) {
+    console.log( seccion );
+  }
+
   ngOnInit() {
       this._articuloService.cargarArticulos()
         .subscribe( (resp: any ) => {
           this.articulos = resp.articulos;
+          console.log('Articulos: ', this.articulos );
         });
   }
 

@@ -21,10 +21,11 @@
                     </div>
                     <h3 class="card-title">Artículos creados ( <small> {{total}} </small> )</h3>
 
-                    <table class="table table-hover">
+                    <table class="table table-hover tabla">
                         <thead>
                             <tr>
                                 <th>Imagen</th>
+                                <th>Código</th>
                                 <th>Nombre</th>
                                 <th>Descripción</th>
                                 <th>Precio</th>
@@ -33,16 +34,17 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let articulo of articulos">
-                                <td><img src="../../../assets/img/articulos/IMG-20190422-WA0004.jpg" class="img-50 img-circle"></td>
+                                <td><img [src]="articulo.imagenes[0] | imagenes" class="img-50 img-rounded"></td>
+                                <td>{{articulo.codigo}}</td>
                                 <td>{{articulo.nombre}}</td>
-                                <td>{{articulo.descripcion}}</td>
+                                <td width="100px">{{articulo.descripcion}}</td>
                                 <td>{{articulo.precio}}</td>
                                 <td>{{articulo.cantidad}}</td>
                                 <td>
-                                    <button (click)="editarArticulo()" class="btn btn-primary">
+                                    <button class="btn btn-primary">
                                         <i class="fa fa-edit" alt="Editar"></i>
                                     </button> &nbsp;
-                                    <button (click)="borrarArticulo()" class="btn btn-danger">
+                                    <button (click)="borrarArticulo(articulo._id)" class="btn btn-danger">
                                         <i class="fa fa-trash-o"></i>
                                     </button>
                                 </td>

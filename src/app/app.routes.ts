@@ -9,6 +9,8 @@ import { ArticulosComponent } from './pages/articulos/articulos.component';
 import { PagesComponent } from './pages/pages.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { CategoriasComponent } from './pages/categorias/categorias.component';
+import { CategoriaComponent } from './pages/categorias/categoria/categoria.component';
 
 
 const appRoutes: Routes = [
@@ -20,6 +22,8 @@ const appRoutes: Routes = [
             { path: 'articulo', component: ArticuloComponent },
             { path: 'cart', component: CartComponent},
             { path: 'articulos', component: ArticulosComponent, data: {titulo: 'Nuevo artículo'}  },
+            { path: 'categorias', component: CategoriasComponent, data: {titulo: 'Categorías'}},
+            { path: 'categoria', component: CategoriaComponent, data: {titulo: 'Nueva categoría'}},
             { path: '', redirectTo: '/home', pathMatch: 'full'}
         ]
     },

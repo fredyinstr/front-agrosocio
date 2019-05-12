@@ -1,91 +1,159 @@
 <div class="container nuevo">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-7">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Nuevo artículo</h4>
                     <!-- <h6 class="card-subtitle">Información del artículo</h6> -->
+                    <form ngNativeValidate [formGroup]="forma" (ngSubmit)="crearArticulo()">
+                        <div class="form p-t-20">
+                            <div class="form-group">
+                                <label for="codigo">Código o referencia</label>
+                                <div class="input-group">
+                                    <input formControlName="codigo" name="codigo" required type="text" class="form-control" id="codigo" placeholder="Código o referencia">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="nombre">Nombre</label>
+                                <div class="input-group">
+                                    <input formControlName="nombre" name="nombre" required type="text" class="form-control" id="nombre" placeholder="Nombre Articulo">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="descripcion">Descripción</label>
+                                <div class="input-group">
+                                    <textarea formControlName="descripcion" required name="descripcion" class="form-control" id="descripcion" placeholder="Descripción"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="precio">Precio</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">$</span>
+                                            </div>
+                                            <input formControlName="precio" name="precio" required id="precio" type="text" class="form-control" aria-label="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="cantidad">Cantidad</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Unidades</span>
+                                            </div>
+                                            <input formControlName="cantidad" name="cantidad" required id="cantidad" type="text" class="form-control" aria-label="">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="form-group row" *ngIf="forma.errors?.esNumero && !forma.pristine">
+                                <p class="text-danger">
+                                    Debe ingresar un valor válido
+                                </p>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-12 col-md-8 input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="categoria">Categoría</label>
+                                    </div>
+                                    <select formControlName="categoria" class="custom-select" required id="categoria" name="categoria">
+                                            <option [value]="categoria._id" *ngFor="let categoria of categorias">{{categoria.nombre}}</option>                                      
+                                            
+                                        </select>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#exampleModal">
+                                            Crear categoría
+                                        </button>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="fa fa-save"></i>
+                                Guardar info. artículo
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-5">
+            <div class="card">
+                <div class="card-body" align="center">
+                    <h4 class="card-title">Imagen del artículo</h4>
+                    <!-- <h6 class="card-subtitle">Información del artículo</h6> -->
                     <div class="form p-t-20">
-                        <div class="form-group">
-                            <label for="nombreArticulo">Nombre</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="nombreArticulo" placeholder="Nombre Articulo">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="descripcionArticulo">Descripción</label>
-                            <div class="input-group">
-                                <textarea class="form-control" id="descripcionArticulo" placeholder="Descripción"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="precioArticulo">Precio</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">$</span>
-                                </div>
-                                <input type="text" [value]="articulo.valor|currency" class="form-control" aria-label="">
-                            </div>
 
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="seccion">Sección</label>
-                                </div>
-                                <select class="custom-select" id="seccion">
-                                  <option selected>Agrícola...</option>
-                                  <option value="1">Ferretería</option>
-                                </select>
-                            </div>
-
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="categoria">Categoría</label>
-                                </div>
-                                <select class="custom-select" id="seccion">
-                                  <option selected>Seleccionar...</option>
-                                </select>
-                            </div>
+                        <img class="img-fluid" *ngIf="!imagenTemp" src="../../../assets/img/no-img.jpg" alt="">
+                        <img class="w-150" *ngIf="imagenTemp" [src]="imagenTemp" alt="">
+                        <br>
+                        <hr>
+                        <div class="custom-file">
+                            <input type="file" [disabled]="!habilitarSubir" (change)="seleccionImagen( $event.target.files[0] )" class="custom-file-input" id="customFileLang" lang="es">
+                            <label class="custom-file-label" for="customFileLang">Seleccionar imagen</label>
                         </div>
-
-                        <button type="submit" class="btn btn-success">
+                        <br><br>
+                        <button type="button" (click)="cambiarImagen()" [disabled]="!imagenSubir" class="btn btn-success btn-block">
                           <i class="fa fa-save"></i>
-                          Guardar información
+                          Subir imagen
                         </button>
                     </div>
                 </div>
             </div>
+
         </div>
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Nuevo artículo</h4>
-                    <!-- <h6 class="card-subtitle">Información del artículo</h6> -->
+    </div>
+</div>
+
+
+
+
+<!-- Modal crear Categoría-->
+<form ngNativeValidate #f="ngForm" (ngSubmit)="crearCategoria( f )">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nueva categoría</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
                     <div class="form p-t-20">
                         <div class="form-group">
-                            <label for="nombreArticulo">Nombre</label>
+                            <label for="nombre">Nombre</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="nombreArticulo" placeholder="Nombre Articulo">
+                                <input ngModel name="nombre" type="text" required class="form-control" id="nombre" placeholder="Nombre de la categoría">
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <label for="descripcionArticulo">Descripción</label>
-                            <div class="input-group">
-                                <textarea class="form-control" id="descripcionArticulo" placeholder="Descripción"></textarea>
-                            </div>
+                            <label for="seccion">Seccion</label>
+                            <select ngModel required class="custom-select" id="seccion" name="seccion">                                     
+                                <option value="5cd5d4e29d70205f14471bd5">Agrícola</option>                                      
+                                <option value="5cc7657667a1ca271c3cff27">Ferretería</option>                                      
+                            </select>
                         </div>
-                        <div class="form-group">
-                            <label for="precioArticulo">Precio</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="precioArticulo" placeholder="Precio">
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-success">
-                          <i class="fa fa-save"></i>
-                          Guardar información
-                        </button>
+
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</form>

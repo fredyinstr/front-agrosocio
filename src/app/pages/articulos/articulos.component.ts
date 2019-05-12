@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Articulo } from '../../models/articulo.model';
 import { ArticuloService } from '../../services/articulo.service';
 import { Router } from '@angular/router';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-articulos',
@@ -28,6 +29,17 @@ export class ArticulosComponent implements OnInit {
 
   crearArticulo() {
     this._router.navigate(['/articulo']);
+  }
+
+  borrarArticulo ( idArticulo ) {
+    this._articuloService.borrarArticulo( idArticulo )
+    .subscribe( ( resp: any ) => {
+      if (resp) {
+        swal ('OK', 'Artículo borrado', 'success');
+        this.cargarArticulos();
+      }
+    });
+
   }
 
   buscarArticulo( termino: string ) {

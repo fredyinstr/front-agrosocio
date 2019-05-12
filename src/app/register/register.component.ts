@@ -47,14 +47,14 @@ export class RegisterComponent implements OnInit {
     }, { validators: this.sonIguales( 'password', 'password2')});
 
 
-    this.forma.setValue({
-      nombre: 'Jhon Fredy',
-      apellido: 'Estrada Ortiz',
-      correo: 'fredyinstr@gmail.com',
-      password: '123',
-      password2: '1234',
-      condiciones: true
-    });
+    // this.forma.setValue({
+    //   nombre: 'Jhon Fredy',
+    //   apellido: 'Estrada Ortiz',
+    //   correo: 'fredyinstr@gmail.com',
+    //   password: '123',
+    //   password2: '1234',
+    //   condiciones: true
+    // });
   }
 
   registrarUsuario() {
@@ -79,7 +79,7 @@ export class RegisterComponent implements OnInit {
     this._usuarioService.crearUsuario( usuario )
             .subscribe( resp => {
                 console.log('respuesta', resp );
-                  swal('OK', 'Usuario creado satisfactoriamente', 'success');
+                  this._router.navigate(['/login']);
             });
   }
 

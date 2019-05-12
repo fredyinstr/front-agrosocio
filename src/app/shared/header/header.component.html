@@ -6,7 +6,7 @@
                 <div class="d-none d-md-block col-md-2 mr-auto logo">
                     <a href="#"><img src="../../../assets/img/logo2.png" alt="logo" height="80"></a>
                 </div>
-                <div class="col-12 col-md-4 col-lg-6 order-2 order-md-1 buscar mb-2 mb-md-0">
+                <div class="col-12 col-md-6 order-2 order-md-1 buscar mb-2 mb-md-0">
                     <form action="">
                         <div class="row no-gutters">
                             <div class="col-10">
@@ -18,17 +18,20 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-12 col-md-4 d-flex justify-content-end ml-auto order-1 order-md-2 menu mb-2 mb-sm-0">
+                <div class="col-12 col-md-2 d-flex justify-content-end ml-auto order-1 order-md-2 menu mb-2 mb-sm-0">
                     <!-- <a href="#" class="dropdown">Usuarios</a> -->
-                    <a href="#" class="border-right"><i class="fas fa-shopping-cart mr-1"></i>12 productos</a>
-                    <div>
+                    <a href="#"><i class="fas fa-shopping-cart mr-1"></i>Carrito vacío</a>
+                    <!-- <div *ngIf="!nombre">
                         <a [routerLink]="['/login']" class="border-right ml-2">
                             Ingresar
                         </a>
                         <a [routerLink]="['/register']" class="ml-2">
                                 Registrarse
                             </a>
-                    </div>
+                    </div> -->
+                    <!-- <div *ngIf="nombre" class="imagen">                        
+                        <img class="img-fluid" src="../../../assets/img/persona1.jpg" alt="">
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -54,10 +57,10 @@
         <hr><br>
     </div> -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <!-- <a class="navbar-brand" href="#">Navbar</a>
+        <!-- <a class="navbar-brand" href="#">Navbar</a>-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
-            </button> -->
+            </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -74,21 +77,58 @@
                     <div class="dropdown-menu menu-categorias" aria-labelledby="navbarDropdown">
                         <h6>Ferretería</h6>
                         <!-- <div class="dropdown-divider"></div> -->
-                        <a class="dropdown-item" href="#">Herramientas</a>
-                        <a class="dropdown-item" href="#">Material de río</a>
-                        <a class="dropdown-item" href="#">Cemento</a>
-                        <a class="dropdown-item" href="#">Ladrillo</a>
+                        <a *ngFor="let categoria of ferreteria" class="dropdown-item" href="#">{{categoria.nombre}}</a>
                         <div class="dropdown-divider"></div>
                         <h6>Agropecuaria</h6>
-                        <a class="dropdown-item" href="#">Alimento para animales</a>
-                        <a class="dropdown-item" href="#">Abonos</a>
-                        <a class="dropdown-item" href="#">Mascotas</a>
-                        <a class="dropdown-item" href="#">Bombas</a>
-                        <a class="dropdown-item" href="#">Mangueras</a>
+                        <a *ngFor="let categoria of agricola" class="dropdown-item" href="#">{{categoria.nombre}}</a>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Ofertas de la semana</a>
+                </li>
+                <li class="nav-item dropdown" *ngIf="nombre">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Administrador
+                  </a>
+                    <div class="dropdown-menu menu-categorias" aria-labelledby="navbarDropdown">
+                        <!-- <h6>Menú administrador</h6> -->
+                        <!-- <div class="dropdown-divider"></div> -->
+                        <a class="dropdown-item" [routerLink]="['/articulos']">Artículos</a>
+                        <a class="dropdown-item" [routerLink]="['/categorias']">Categorías</a>
+                        <a class="dropdown-item disabled" [routerLink]="['/usuarios']">Usuarios</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown" *ngIf="nombre">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{nombre}}
+                      </a>
+                    <div class="dropdown-menu menu-categorias" aria-labelledby="navbarDropdown">
+                        <!-- <h6>Menú administrador</h6> -->
+                        <!-- <div class="dropdown-divider"></div> -->
+                        <div class="user-img">
+                            <img class="img-fluid" src="../../../assets/img/persona2.jpg" alt="">
+                        </div>
+                        <div>
+                            <p class="ml-2"><small>{{ usuario.email }}</small></p>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Mi cuenta</a>
+                        <a class="dropdown-item" href="#">Mis pedidos</a>
+                        <a class="dropdown-item pointer" (click)="logout()">Cerrar sesión</a>
+                    </div>
+                </li>
+                <li class="nav-item" *ngIf="!nombre">
+                    <!-- <div *ngIf="!nombre"> -->
+                    <a class="nav-link" [routerLink]="['/login']">
+                                    Ingresar
+                                </a>
+                </li>
+                <li class="nav-item" *ngIf="!nombre">
+                    <a class="nav-link" [routerLink]="['/register']">
+                                        Registrarse
+                                    </a>
+                    <!-- </div> -->
                 </li>
             </ul>
             <!-- <form class="form-inline my-2 my-lg-0">

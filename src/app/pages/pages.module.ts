@@ -12,6 +12,12 @@ import { FooterComponent } from '../shared/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { ServicesModule } from '../services/services.module';
 import { UsuarioService } from '../services/service.index';
+import { CategoriasComponent } from './categorias/categorias.component';
+import { CategoriaComponent } from './categorias/categoria/categoria.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { ImagenesPipe } from '../pipes/imagenes.pipe';
 
 
 
@@ -26,13 +32,18 @@ import { UsuarioService } from '../services/service.index';
         ArticuloComponent,
         CartComponent,
         ArticulosComponent,
-        PagesComponent
+        PagesComponent,
+        CategoriasComponent,
+        CategoriaComponent,
+        ImagenesPipe
     ],
     imports: [
         CommonModule,
         RouterModule,
         HttpClientModule,
-        ServicesModule
+        ServicesModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [ArticuloService, UsuarioService]
   })

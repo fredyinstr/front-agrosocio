@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-right">
+                    <!-- <button (click)="crearCategoria()" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+                      <i class="fa fa-plus"></i> Crear Categoría
+                  </button> -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                      <i class="fa fa-plus"></i> Crear Categoría
+                  </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Nueva categoría</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form ngNativeValidate #f="ngForm" (ngSubmit)="nuevaCategoria( f )">
+                                        <div class="form p-t-20">
+                                            <div class="form-group">
+                                                <label for="fasdfas">Categoría</label>
+                                                <div class="input-group">
+                                                    <input ngModel name="nombre" type="text" required class="form-control" id="nombre" placeholder="Nombre de categoría">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="seccion">Sección</label>
+                                                <div class="input-group">
+                                                    <input ngModel name="seccion" type="text" required class="form-control" id="seccion" placeholder="Sección">
+                                                </div>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-success btn-block">
+                                            Ingresar
+                                        </button>
+                                            <!-- </div> -->
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="card-title">Categorías ( <small> {{total}} </small> )</h3>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Sección</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let categoria of categorias">
+
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button disabled=( click)="editarCategoria()" class="btn btn-primary">
+                                  <i class="fa fa-edit" alt="Editar"></i>
+                              </button> &nbsp;
+                                <button class="btn btn-danger">
+                                  <i class="fa fa-trash-o"></i>
+                              </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>

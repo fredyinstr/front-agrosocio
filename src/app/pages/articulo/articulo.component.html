@@ -1,5 +1,5 @@
 <div class="container nuevo">
-    <div class="row">
+    <div class="row animated fadeIn">
         <div class="col-lg-7">
             <div class="card">
                 <div class="card-body">
@@ -10,19 +10,19 @@
                             <div class="form-group">
                                 <label for="codigo">Código o referencia</label>
                                 <div class="input-group">
-                                    <input formControlName="codigo" name="codigo" required type="text" class="form-control" id="codigo" placeholder="Código o referencia">
+                                    <input [(ngModel)]="articulo.codigo" formControlName="codigo" name="codigo" required type="text" class="form-control" id="codigo" placeholder="Código o referencia">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="nombre">Nombre</label>
                                 <div class="input-group">
-                                    <input formControlName="nombre" name="nombre" required type="text" class="form-control" id="nombre" placeholder="Nombre Articulo">
+                                    <input [(ngModel)]="articulo.nombre" formControlName="nombre" name="nombre" required type="text" class="form-control" id="nombre" placeholder="Nombre Articulo">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="descripcion">Descripción</label>
                                 <div class="input-group">
-                                    <textarea formControlName="descripcion" required name="descripcion" class="form-control" id="descripcion" placeholder="Descripción"></textarea>
+                                    <textarea [(ngModel)]="articulo.descripcion" formControlName="descripcion" required name="descripcion" class="form-control" id="descripcion" placeholder="Descripción"></textarea>
                                 </div>
                             </div>
                             <div class="row">
@@ -33,7 +33,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">$</span>
                                             </div>
-                                            <input formControlName="precio" name="precio" required id="precio" type="text" class="form-control" aria-label="">
+                                            <input [(ngModel)]="articulo.precio" formControlName="precio" name="precio" required id="precio" type="text" class="form-control" aria-label="">
                                         </div>
                                     </div>
                                 </div>
@@ -45,7 +45,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Unidades</span>
                                             </div>
-                                            <input formControlName="cantidad" name="cantidad" required id="cantidad" type="text" class="form-control" aria-label="">
+                                            <input [(ngModel)]="articulo.cantidad" formControlName="cantidad" name="cantidad" required id="cantidad" type="text" class="form-control" aria-label="">
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="categoria">Categoría</label>
                                     </div>
-                                    <select formControlName="categoria" class="custom-select" required id="categoria" name="categoria">
+                                    <select [(ngModel)]="articulo.categoria" formControlName="categoria" class="custom-select" required id="categoria" name="categoria">
                                             <option [value]="categoria._id" *ngFor="let categoria of categorias">{{categoria.nombre}}</option>                                      
                                             
                                         </select>
@@ -76,11 +76,21 @@
                                         </button>
                                 </div>
                             </div>
-
-                            <button type="submit" class="btn btn-success btn-block">
-                                <i class="fa fa-save"></i>
-                                Guardar info. artículo
-                            </button>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <button type="submit" class="btn btn-success btn-block">
+                                        <i class="fa fa-save"></i>
+                                        Guardar
+                                    </button>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <button routerLink="/articulos" type="submit" class="btn btn-dark btn-block">
+                                                <i class="far fa-arrow-alt-circle-left"></i>
+                                                Regresar
+                                        </button>
+                                    <!-- <a routerLink="/articulos" class="btn btn-inverse">Regresar</a> -->
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -95,7 +105,8 @@
                     <!-- <h6 class="card-subtitle">Información del artículo</h6> -->
                     <div class="form p-t-20">
 
-                        <img class="img-fluid" *ngIf="!imagenTemp" src="../../../assets/img/no-img.jpg" alt="">
+                        <!-- <img class="img-fluid" *ngIf="!imagenTemp" src="../../../assets/img/no-img.jpg" alt=""> -->
+                        <img class="img-fluid" *ngIf="!imagenTemp" [src]="imagenCargada | imagenes:'articulos'" alt="">
                         <img class="w-150" *ngIf="imagenTemp" [src]="imagenTemp" alt="">
                         <br>
                         <hr>

@@ -5,7 +5,7 @@ import { Categoria } from '../../models/categoria.model';
 import { CategoriaService } from '../../services/service.index';
 import { ArticuloService } from '../../services/service.index';
 import { Articulo } from '../../models/articulo.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-articulo',
@@ -16,24 +16,40 @@ export class ArticuloComponent implements OnInit {
   forma: FormGroup;
 
   categorias: [] = [];
-  articulo: Articulo;
+  articulo: Articulo = new Articulo('', '', '', 0, '');
 
   imagenSubir: File;
   habilitarSubir = false;
   imagenTemp: any;
-
-  // articulo: any = {
-  //   nombre: 'nombre',
-  //   valor: '150000'
-  // };
+  imagenCargada: any;
 
   constructor(
               public _categoriaService: CategoriaService,
               public _articuloService: ArticuloService,
-              public router: Router
-              ) { }
+              public router: Router,
+              public activatedRoute: ActivatedRoute
+              ) {
 
-  regresar(){
+                activatedRoute.params.subscribe( params => {
+                  const id = params['id'];
+                  if ( id !== 'nuevo') {
+                    this.cargarArticulo( id );
+                  }
+                });
+             }
+
+  cargarArticulo( id: String ) {
+    this._articuloService.cargarArticulo( id )
+    .subscribe( (resp: any) => {
+      this.articulo = resp.articulo;
+      this.habilitarSubir = true;
+      console.log ( 'Articulo cargado: ', this.articulo );
+      this.imagenCargada = this.articulo.imagenes[this.articulo.imagenes.length - 1];
+      console.log ( 'Imagen del articulo: ', this.imagenCargada);
+    });
+  }
+
+  regresar() {
     this.router.navigate(['/articulos']);
   }
 
@@ -84,18 +100,20 @@ export class ArticuloComponent implements OnInit {
   }
 
   crearArticulo() {
-    if ( this.forma.invalid ) {
-      return;
-    }
     console.log('creando artículo', this.forma.value);
-      this.articulo = new Articulo (
-      this.forma.value.codigo,
-      this.forma.value.nombre,
-      this.forma.value.descripcion,
-      this.forma.value.precio,
-      this.forma.value.categoria,
-      this.forma.value.cantidad
-    );
+    if (!this.articulo._id) {
+        if ( this.forma.invalid ) {
+          return;
+        }
+        this.articulo = new Articulo (
+        this.forma.value.codigo,
+        this.forma.value.nombre,
+        this.forma.value.descripcion,
+        this.forma.value.precio,
+        this.forma.value.categoria,
+        this.forma.value.cantidad
+      );
+    }
     this._articuloService.crearArticulo( this.articulo )
       .subscribe( ( resp: any ) => {
         this.articulo = resp;

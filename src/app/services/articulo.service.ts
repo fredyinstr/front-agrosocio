@@ -8,6 +8,7 @@ import { map, catchError } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 import swal from 'sweetalert';
 import { Router } from '@angular/router';
+import { UsuarioService } from './usuario/usuario.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,28 +18,57 @@ export class ArticuloService {
 
   constructor(private http: HttpClient,
         public _subirArchivoService: SubirArchivoService,
+        public _usuarioService: UsuarioService,
         public router: Router) { }
 
   crearArticulo( articulo: Articulo) {
-    const url = URL_SERVICIOS + '/articulo';
-    return this.http.post( url, articulo ).pipe(
-      map( (response: any)  => {
-         return response.articulo;
-      }),
-      catchError( (errorCatchable: any) => {
-       swal({
-         title: 'Error',
-         text: errorCatchable.error.mensaje,
-         icon: 'error',
-       });
-         console.log(errorCatchable.error.mensaje);
-         return new Observable<any>();
-      })
-    );
+    let url = URL_SERVICIOS + '/articulo';
+
+    if ( articulo._id ) {
+      // actualizando
+      url += '/' + articulo._id;
+      url += '?token=' + this._usuarioService.token;
+      return this.http.put( url, articulo ).pipe(
+        map( (response: any)  => {
+           return response.articulo;
+        }),
+        catchError( (errorCatchable: any) => {
+         swal({
+           title: 'Error',
+           text: errorCatchable.error.mensaje,
+           icon: 'error',
+         });
+           console.log(errorCatchable.error.mensaje);
+           return new Observable<any>();
+        })
+      );
+    } else {
+
+      return this.http.post( url, articulo ).pipe(
+        map( (response: any)  => {
+           return response.articulo;
+        }),
+        catchError( (errorCatchable: any) => {
+         swal({
+           title: 'Error',
+           text: errorCatchable.error.mensaje,
+           icon: 'error',
+         });
+           console.log(errorCatchable.error.mensaje);
+           return new Observable<any>();
+        })
+      );
+    }
+
   }
 
   cargarArticulos() {
     const url = URL_SERVICIOS + '/articulo';
+    return this.http.get( url );
+  }
+
+  cargarArticulo( id: String ) {
+    const url = URL_SERVICIOS + '/articulo/' + id;
     return this.http.get( url );
   }
 

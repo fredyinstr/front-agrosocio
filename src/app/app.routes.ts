@@ -19,7 +19,7 @@ const appRoutes: Routes = [
         component: PagesComponent,
         children: [
             { path: 'home', component: HomeComponent  },
-            { path: 'articulo', component: ArticuloComponent },
+            { path: 'articulo/:id', component: ArticuloComponent },
             { path: 'cart', component: CartComponent},
             { path: 'articulos', component: ArticulosComponent, data: {titulo: 'Nuevo artículo'}  },
             { path: 'categorias', component: CategoriasComponent, data: {titulo: 'Categorías'}},

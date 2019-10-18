@@ -3,6 +3,7 @@ import { Articulo } from '../../models/articulo.model';
 import { ArticuloService } from '../../services/articulo.service';
 import { Router } from '@angular/router';
 import swal from 'sweetalert';
+import { Button } from 'protractor';
 
 @Component({
   selector: 'app-articulos',
@@ -18,6 +19,8 @@ export class ArticulosComponent implements OnInit {
     public _router: Router
   ) { }
 
+
+
   cargarArticulos() {
     this._articuloService.cargarArticulos()
       .subscribe( (resp: any) => {
@@ -28,18 +31,35 @@ export class ArticulosComponent implements OnInit {
   }
 
   crearArticulo() {
-    this._router.navigate(['/articulo']);
+    this._router.navigate(['/articulo/nuevo']);
+  }
+
+  editarArticulo( id ) {
+    this._router.navigate(['/articulo/' + id ]);
   }
 
   borrarArticulo ( idArticulo ) {
-    this._articuloService.borrarArticulo( idArticulo )
-    .subscribe( ( resp: any ) => {
-      if (resp) {
-        swal ('OK', 'Artículo borrado', 'success');
-        this.cargarArticulos();
-      }
-    });
-
+    swal({
+      title: 'Está segur@ de eliminar el artículo?',
+      text: 'Una vez eliminado, la operación no podrá deshacerse!',
+      icon: 'warning',
+      dangerMode: true,
+      buttons: ['cancel', 'ok']
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            this._articuloService.borrarArticulo( idArticulo )
+                  .subscribe( ( resp: any ) => {
+                    if (resp) {
+                      swal ('OK', 'Artículo borrado', 'success');
+                      this.cargarArticulos();
+                    }
+                });
+            // swal('Artículo borrado!');
+          } else {
+            swal('El artículo está a salvo!');
+          }
+        });
   }
 
   buscarArticulo( termino: string ) {
